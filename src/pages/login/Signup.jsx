@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import Frame8 from '../../images/Frame 8.png'
 import { useForm } from '../../hook/useForm'
-import { signUp, isUsernameDuplicate, SendAuthCodeToEmail, postAuthCode } from '../../apis/user'
+import { signUp, isUsernameDuplicate, SendAuthCodeToEmail } from '../../apis/user'
 import TermsModal from '../../components/login/TermsModal'
   
 const Signup = () => {
@@ -191,7 +191,7 @@ const Signup = () => {
   return (
     <>
     <Header>
-      <img src={Frame8} style={{ width: '200px', height: '40px', cursor: 'pointer' }} onClick={toHome}></img>
+      <img src={Frame8} alt="Logo" style={{ width: '200px', height: '40px', cursor: 'pointer' }} onClick={toHome}></img>
     </Header>
     <Wrapper> 
       <Form>

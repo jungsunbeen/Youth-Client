@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { MdOutlineKeyboardBackspace, MdOutlineNearMe } from 'react-icons/md';
+import { MdOutlineKeyboardBackspace } from 'react-icons/md';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import HeaderHook from '../../components/HeaderHook';
@@ -16,9 +16,8 @@ const MadedBingo = () => {
   const navigate = useNavigate();
   const { location } = useParams();
   const [checklists, setChecklists] = useState([]);
-  const [newChecklistText, setNewChecklistText] = useState('');
   const [info, setInfo] = useState(null);
-  const [isExecuted, setIsExecuted] = useRecoilState(isExecutedState);
+  const [isExecuted] = useRecoilState(isExecutedState);
 
   const goHome = () => {
     navigate("/view");
@@ -75,8 +74,7 @@ const MadedBingo = () => {
 
   const postTodolists = async (id, postmessage) => {
     try {
-      const response = await postTodolist(id, postmessage);
-      // console.log(response);
+      await postTodolist(id, postmessage);
     } catch (error) {
       console.error('Error in postTodolists:', error.response ? error.response.data : error.message);
       throw error;
@@ -88,7 +86,7 @@ const MadedBingo = () => {
   }
 
   const handleMadeReviewClick = (location) => {
-    if(isExecuted[location]==0){
+    if(isExecuted[location]===0){
       navigate(`/dragreview/${location}`);
     }else{
       alert("이미 작성하신 리뷰가 있습니다.");

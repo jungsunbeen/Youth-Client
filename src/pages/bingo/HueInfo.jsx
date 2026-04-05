@@ -12,9 +12,9 @@ import Bingomain from './Bingomain';
 //홈화면의 휴알유 추천 페이지 사실 하나만 있어도 되는데 2개만 있어서 두가지를 나눠서 해주었습니다.. 시간있으면 쿼리로 할 것
 const HueInfo = () => {
   const navigate = useNavigate();
-  const [recommendations, setRecommend] = useState([]);
+  const [, setRecommend] = useState([]);
   const [title, setTitle] = useState('');
-  const [largeCategory, setLargeCategory] = useState('');
+  const [, setLargeCategory] = useState('');
   const [content, setContent] = useState([]);
   const [images, setImages] = useState([]);
   //뒤로가기 버튼

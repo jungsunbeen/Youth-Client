@@ -19,7 +19,7 @@ const MyPageModal = ({ isOpen }) => {
     <>
     <ModalWrapper>
       <ModalBtn>
-        <img src={moneyimg} style={{width: '20px', height: '20px', marginRight: '5px'}}></img>
+        <img src={moneyimg} alt="Points" style={{width: '20px', height: '20px', marginRight: '5px'}}></img>
         <span>1,000P</span>
       </ModalBtn>
       <ModalBtn>

@@ -37,33 +37,33 @@ const AlarmManage = () => {
       <HeaderHook></HeaderHook>
       <Body>
         <TitleWrapper>
-          <img src={backimg} style={{width: '32px', height: '32px', cursor: 'pointer'}} onClick={toAlarm}></img>
+          <img src={backimg} alt="뒤로가기" style={{width: '32px', height: '32px', cursor: 'pointer'}} onClick={toAlarm}></img>
           <SectionTitle>알림 설정</SectionTitle>
-          <img src={transimg} />
+          <img src={transimg} alt="" />
         </TitleWrapper>
         <ControlWrapper>
           <ControlItem>
-            <ControlLabel><img src={heartimg}></img>공감 알림</ControlLabel>
+            <ControlLabel><img src={heartimg} alt="공감"></img>공감 알림</ControlLabel>
             <ControlBtn onClick={() => handleBtn('heart')}>
-              {switchStates.heart ? <img src={onSwitch}></img> : <img src={offSwitch}></img>}
+              {switchStates.heart ? <img src={onSwitch} alt="켜짐"></img> : <img src={offSwitch} alt="꺼짐"></img>}
             </ControlBtn>
           </ControlItem>
           <ControlItem>
-            <ControlLabel><img src={msgimg}></img>새 댓글 알림</ControlLabel> 
+            <ControlLabel><img src={msgimg} alt="댓글"></img>새 댓글 알림</ControlLabel>
             <ControlBtn onClick={() => handleBtn('comment')}>
-              {switchStates.comment ? <img src={onSwitch}></img> : <img src={offSwitch}></img>}
+              {switchStates.comment ? <img src={onSwitch} alt="켜짐"></img> : <img src={offSwitch} alt="꺼짐"></img>}
             </ControlBtn>
           </ControlItem>
           <ControlItem>
-            <ControlLabel><img src={dollarimg}></img>포인트 적립 알림</ControlLabel>
+            <ControlLabel><img src={dollarimg} alt="포인트"></img>포인트 적립 알림</ControlLabel>
             <ControlBtn onClick={() => handleBtn('point')}>
-              {switchStates.point ? <img src={onSwitch}></img> : <img src={offSwitch}></img>}
+              {switchStates.point ? <img src={onSwitch} alt="켜짐"></img> : <img src={offSwitch} alt="꺼짐"></img>}
             </ControlBtn>
           </ControlItem>
           <ControlItem>
-            <ControlLabel><img src={fileimg}></img>휴알유 포스트 알림</ControlLabel>
+            <ControlLabel><img src={fileimg} alt="포스트"></img>휴알유 포스트 알림</ControlLabel>
             <ControlBtn onClick={() => handleBtn('post')}>
-              {switchStates.post ? <img src={onSwitch}></img> : <img src={offSwitch}></img>}
+              {switchStates.post ? <img src={onSwitch} alt="켜짐"></img> : <img src={offSwitch} alt="꺼짐"></img>}
             </ControlBtn>
           </ControlItem>
         </ControlWrapper>

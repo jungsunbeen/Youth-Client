@@ -28,7 +28,7 @@ const HeaderHook = () => {
     </LogoutBtn>
     <Headers>
       <Logo to ="/">
-        <img src={logoimg}></img>
+        <img src={logoimg} alt="Logo"></img>
       </Logo>
       <Nav>
         <Header to="/test/0">휴학 유형 테스트</Header>
@@ -39,8 +39,8 @@ const HeaderHook = () => {
           <Header to="/mypage">마이페이지</Header>
           <Modal onClick={handleBtn}>
             { isModalOpen ?
-              <img src={modalopenimg}></img> :
-              <img src={modalcloseimg}></img> }
+              <img src={modalopenimg} alt="Close menu"></img> :
+              <img src={modalcloseimg} alt="Open menu"></img> }
           </Modal>
         </Mypage>
       </Nav>

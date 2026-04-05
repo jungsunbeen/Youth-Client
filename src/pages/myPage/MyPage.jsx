@@ -4,8 +4,6 @@ import HeaderHook from '../../components/HeaderHook'
 import FooterHook from '../../components/FooterHook'
 import { useNavigate } from 'react-router-dom'
 import { myInfo } from '../../apis/mypageapis'
-import { getTypeTestResult } from '../../apis/viewResultapis'
-import { getViewtype } from '../../apis/testapis';
 
 
 const MyPage = () => {

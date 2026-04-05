@@ -371,15 +371,7 @@ const InputTitleBox = styled.input`
   color: rgba(81, 81, 81, 1);
   width: 100%;
 `
-const Selector = styled.select`
-  font-size: 15px;
-  padding: 10px;
-  border-radius: 10px;
-  width: 110px;
-  border: none;
-  background: rgba(30, 58, 138, 1);
-  color: white;
-`
+// Selector removed - unused
 
 const InputInfoBox = styled.input`
   border: none;

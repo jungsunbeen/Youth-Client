@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { MdOutlineKeyboardBackspace, MdOutlineNearMe } from 'react-icons/md';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { Bingo, Body } from './Home';
+import { Body } from './Home';
 import HeaderHook from '../../components/HeaderHook';
 import FooterHook from '../../components/FooterHook';
-import { getBingoloc, getInfo, putBingoloc } from '../../apis/testapis';
+import { getBingoloc, putBingoloc } from '../../apis/testapis';
 import { Category, CheckLists, CheckList, InputBox } from './MadeBingo';
 import { RightDom,DateInfo ,TitleLine,Car} from './BingoInfo';
 import { AiOutlineMinusCircle } from 'react-icons/ai';
@@ -18,9 +18,9 @@ const MadedBingoEdit = () => {
   const navigate = useNavigate();
   const [checklists, setChecklists] = useState([]);
   const [newChecklistText, setNewChecklistText] = useState('');
-  const { id, location } = useParams();
+  const { location } = useParams();
   const [info, setInfo] = useState(null);
-  const [bingos, setBingos] = useRecoilState(bingoState);
+  const [, setBingos] = useRecoilState(bingoState);
   const [bingoObject, setBingoObject] = useRecoilState(bingoObjectState);
 
   const goHome = () => {
@@ -272,19 +272,6 @@ const MadedBingoEdit = () => {
 
 export default MadedBingoEdit;
 
-const Button = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-  height: 20px;
-  padding: 10px;
-  gap: 10px;
-  border-radius: 10px;
-  background: rgba(30, 58, 138, 1);
-  color: white;
-`;
-
 const Line = styled.div`
   display: flex;
   flex-direction: row;
@@ -316,8 +303,3 @@ export const Review = styled.div`
   border-radius: 10px;
 `;
 
-const StyledDiv = styled.div`
-  border: 0.4px solid rgba(142, 156, 196, 1);
-  border-radius: 10px;
-  padding: 7px;
-`;

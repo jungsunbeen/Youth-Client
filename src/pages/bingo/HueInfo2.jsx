@@ -12,9 +12,9 @@ import Bingomain from './Bingomain';
 
 const HueInfo = () => {
   const navigate = useNavigate();
-  const [recommendations, setRecommend] = useState([]);
+  const [, setRecommend] = useState([]);
   const [title, setTitle] = useState('');
-  const [largeCategory, setLargeCategory] = useState('');
+  const [, setLargeCategory] = useState('');
   const [content, setContent] = useState('');
   const [images, setImages] = useState([]);
 

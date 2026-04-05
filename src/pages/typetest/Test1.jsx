@@ -43,7 +43,7 @@ const Test1 = () => {
   return (
     <>
     <Header>
-      <img src={textLogo} style={{ width: '200px', height: '40px', cursor: 'pointer' }} onClick={toHome}></img>
+      <img src={textLogo} alt="logo" style={{ width: '200px', height: '40px', cursor: 'pointer' }} onClick={toHome}></img>
     </Header>
     <QuizDom>
       <ProgressBar currentStep={2} totalSteps={4} />

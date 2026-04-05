@@ -5,7 +5,7 @@ import { postTest } from '../../apis/testapis';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { usernameState } from '../../recoil/atoms';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue, useRecoilState } from 'recoil';
 import { answer2State, answer3State, answer4State, semesterState, yearState } from '../../recoil/testatoms';
 import textLogo from '../../images/Frame 8.png';
 
@@ -15,11 +15,11 @@ const Result = () => {
   const [content, setContent] = useState([]);
   const [image, setImage] = useState("");
 
-  const [semester, setSemester] = useRecoilState(semesterState);
-  const [year, setYear] = useRecoilState(yearState);
-  const [answer2, setAnswer2] = useRecoilState(answer2State);
-  const [answer3, setAnswer3] = useRecoilState(answer3State);
-  const [answer4, setAnswer4] = useRecoilState(answer4State);
+  const semester = useRecoilValue(semesterState);
+  const year = useRecoilValue(yearState);
+  const answer2 = useRecoilValue(answer2State);
+  const answer3 = useRecoilValue(answer3State);
+  const answer4 = useRecoilValue(answer4State);
   const [username, setUsername] = useRecoilState(usernameState);
   const [usertypedisplay, setUserTypeDisplay] = useState('');
   
@@ -58,6 +58,7 @@ const Result = () => {
 
   useEffect(() => {
     showResult();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const toHome = () => {
@@ -75,7 +76,7 @@ const Result = () => {
   return (
     <>
       <Header>
-        <img src={textLogo} style={{ width: '200px', height: '40px', cursor: 'pointer' }} onClick={toHome}></img>
+        <img src={textLogo} alt="logo" style={{ width: '200px', height: '40px', cursor: 'pointer' }} onClick={toHome}></img>
       </Header>
       <ResultDom>
         <span> {username} 님의 휴학 유형</span>

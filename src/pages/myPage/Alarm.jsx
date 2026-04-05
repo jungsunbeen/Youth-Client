@@ -19,9 +19,9 @@ const Alarm = () => {
       <HeaderHook></HeaderHook>
       <Body>
         <TitleWrapper>
-            <img src={transimg} />
+            <img src={transimg} alt="" />
             <SectionTitle>알림</SectionTitle>
-            <img src={AiOutlineSetting} style={{width: '28px', height: '28px', cursor: 'pointer'}} onClick={toSetting}></img>
+            <img src={AiOutlineSetting} alt="설정" style={{width: '28px', height: '28px', cursor: 'pointer'}} onClick={toSetting}></img>
         </TitleWrapper>
         <AlarmWrapper>
           <div>

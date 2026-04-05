@@ -67,7 +67,7 @@ const Introduce = () => {
       </LogoutBtn>
       <Headers>
         <Logo to ="/">
-          <img src={logo}></img>
+          <img src={logo} alt="logo"></img>
         </Logo>
         <Nav>
           { isLoggedIn ?
@@ -80,8 +80,8 @@ const Introduce = () => {
               <Header to="/mypage">마이페이지</Header>
               <Modal onClick={handleMyBtn}>
                 { isMyModalOpen ?
-                  <img src={modalopenimg}></img> :
-                  <img src={modalcloseimg}></img> }
+                  <img src={modalopenimg} alt="menu open"></img> :
+                  <img src={modalcloseimg} alt="menu close"></img> }
               </Modal>
             </Mypage> 
           </> :
@@ -101,7 +101,7 @@ const Introduce = () => {
           <div style={{fontSize: '20px', color: 'rgba(116, 116, 116, 1)'}}>휴학, 나의 시간을 가치있는 성과로 만들어보세요!</div>
         </HueText>
         <HueImg>
-          <img src={hueimg}></img>
+          <img src={hueimg} alt="HueRU"></img>
         </HueImg>
       </HueRuWrapper>
       <TestWrapper>
@@ -112,15 +112,15 @@ const Introduce = () => {
           간단한 질문과 캐릭터를 통한 해석을 통해 목표를 정확하게 정의하고 여정을 준비할 수 있습니다.</div>
         </TestText>
         <TestImg>
-          <img src={bearimg}></img>
+          <img src={bearimg} alt=""></img>
         </TestImg>
         <TestBox>
-          <img src={test}></img>
+          <img src={test} alt=""></img>
         </TestBox>
       </TestWrapper>
       <RecoWrapper>
         <RecoImg>
-          <img src={reco}></img>
+          <img src={reco} alt=""></img>
         </RecoImg>
         <RecoText>
           <div style={{fontSize: '16px'}}>휴학 중, 무엇을 해야할지 모르겠다면?</div>
@@ -138,12 +138,12 @@ const Introduce = () => {
           목표를 달성하는 재미와 함께, 의미 있는 휴학 기간을 만들어갈 수 있습니다.</div>
         </BingoText>
         <BingoImg>
-          <img src={bingo}></img>
+          <img src={bingo} alt=""></img>
         </BingoImg>
       </BingoWrapper> 
       <NotiWrapper>
         <NotiImg>
-          <img src={noti}></img>
+          <img src={noti} alt=""></img>
         </NotiImg>
         <NotiText>
           <div style={{fontSize: '16px'}}>더 많은 정보와 경험자들의 팁이 필요하다면?</div>
@@ -162,7 +162,7 @@ const Introduce = () => {
           나만의 경험과 성장의 모습을 담은 포트폴리오를 채우며 지난 시간을 돌아보고 앞으로를 계획해보세요.</div>
         </PofolText>
         <PofolImg>
-          <img src={pofol}></img>
+          <img src={pofol} alt=""></img>
         </PofolImg>
       </PofolWrapper>
     </Body>

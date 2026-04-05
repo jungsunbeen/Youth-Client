@@ -93,10 +93,10 @@ const ReadPortfolio = () => {
     <HeaderHook></HeaderHook>
     <BackgroundWrapper></BackgroundWrapper>
     <ProfileImage>
-      <img src={image} style={{ height: '128px', width: '128px', borderRadius: '50%'}}></img>
+      <img src={image} alt="profile" style={{ height: '128px', width: '128px', borderRadius: '50%'}}></img>
     </ProfileImage>
     <ChangeBtn>
-      <button onClick={toChangeMode}><img src={editimg}></img></button>
+      <button onClick={toChangeMode}><img src={editimg} alt="edit"></img></button>
     </ChangeBtn>
     <Body>
       <ProfileWrapper>
@@ -115,14 +115,14 @@ const ReadPortfolio = () => {
           <SectionTitle style={{marginBottom: '30px'}}>{username}님의 휴 are you</SectionTitle>
           <AboutMeWrapper>
             <SubTitle style={{backgroundColor: '#7485B5'}}>
-              <img src={AiOutlineRocket} style={{ height: '22px', width: '22px'}}></img>
+              <img src={AiOutlineRocket} alt="" style={{ height: '22px', width: '22px'}}></img>
               저는 이런 사람입니다
               </SubTitle>
             <Content>
               <ContentWrapper>
                 {newAboutMeTexts.map((data) => (
                   <div key={data.id} style={{ display: 'flex'}}>
-                    <img src={FiCheck} style={{ width: '20px', height: '20px', marginRight: '8px' }} />
+                    <img src={FiCheck} alt="" style={{ width: '20px', height: '20px', marginRight: '8px' }} />
                     <ContentList>
                       <div>{data.content}</div>
                     </ContentList>
@@ -133,12 +133,12 @@ const ReadPortfolio = () => {
           </AboutMeWrapper>
           <HueWrapper>
             <ClearWrapper>
-              <SubTitle style={{backgroundColor: '#A5B0D0'}}><img src={FiNavigation} style={{ height: '21px', width: '21px' }}></img>달성한 빙고 한 눈에 보기</SubTitle>
+              <SubTitle style={{backgroundColor: '#A5B0D0'}}><img src={FiNavigation} alt="" style={{ height: '21px', width: '21px' }}></img>달성한 빙고 한 눈에 보기</SubTitle>
               <Content>
                  <ContentWrapper>
                     {newBingoTexts.map((data) => (
                       <div key={data.id} style={{ display: 'flex'}}>
-                        <img src={FiCheck} style={{ width: '20px', height: '20px', marginRight: '8px' }} />
+                        <img src={FiCheck} alt="" style={{ width: '20px', height: '20px', marginRight: '8px' }} />
                         <ContentList>
                           <div>{data.content}</div>
                         </ContentList>
@@ -148,12 +148,12 @@ const ReadPortfolio = () => {
               </Content>
             </ClearWrapper>
             <ClearWrapper>
-              <SubTitle style={{backgroundColor: '#D2D8E8'}}><img src={AiOutLineBank} style={{ height: '21px', width: '19px' }}></img>다른 성과 한 눈에 보기</SubTitle>
+              <SubTitle style={{backgroundColor: '#D2D8E8'}}><img src={AiOutLineBank} alt="" style={{ height: '21px', width: '19px' }}></img>다른 성과 한 눈에 보기</SubTitle>
               <Content>
                 <ContentWrapper>
                   {newOthersTexts.map((data) => (
                     <div key={data.id} style={{ display: 'flex'}}>
-                      <img src={FiCheck} style={{ width: '20px', height: '20px', marginRight: '8px' }} />
+                      <img src={FiCheck} alt="" style={{ width: '20px', height: '20px', marginRight: '8px' }} />
                       <ContentList>
                         <div>{data.content}</div>
                       </ContentList>
@@ -166,11 +166,11 @@ const ReadPortfolio = () => {
         </AchievementWrapper>
         <ReviewWrapper style={{ float: 'bottom' }}>
           <Title>
-            <SectionTitle><img src={MdOutlinedFeed} style={{ height: '21px', width: '19px' }}></img>내가 쓴 포스트 보기</SectionTitle>
+            <SectionTitle><img src={MdOutlinedFeed} alt="" style={{ height: '21px', width: '19px' }}></img>내가 쓴 포스트 보기</SectionTitle>
             <CheckBox onClick={handleCheck}>
               {isChecked ? 
-                <img src={checkimg} style={{ width: '24px', height: '24px', paddingRight: '10px' }}></img> :
-                <img src={Vector} style={{ width: '24px', height: '24px', paddingRight: '10px' }}></img>}
+                <img src={checkimg} alt="checked" style={{ width: '24px', height: '24px', paddingRight: '10px' }}></img> :
+                <img src={Vector} alt="unchecked" style={{ width: '24px', height: '24px', paddingRight: '10px' }}></img>}
               <p>빙고 인증 후기만 보기</p>
             </CheckBox>
           </Title>
@@ -181,7 +181,7 @@ const ReadPortfolio = () => {
                   <ImageWrapper>
                     {review.images.map((img) => (
                       <ReviewImage key={img.image_id}>
-                        <img src={img.image} />
+                        <img src={img.image} alt="" />
                       </ReviewImage>
                     ))}
                   </ImageWrapper>

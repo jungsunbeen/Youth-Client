@@ -9,7 +9,7 @@ import HeaderHook from '../../components/HeaderHook';
 import FooterHook from '../../components/FooterHook'
 import { RightDom } from './BingoInfo';
 import { LineDom, RecommendDom, RecommendCom, StyledDday1, StyledDday2,Body,InfoDom,Info,Selector  } from './Home';
-import { prepDateState, bingoState, usernameState, startDateState, endDateState, titleState, bingoIdState, Day1State, Day2State, isExecutedState } from '../../recoil/atoms';
+import { prepDateState, bingoState, usernameState, startDateState, endDateState, titleState, Day1State, Day2State, isExecutedState } from '../../recoil/atoms';
 import CustomCalendar from './CustomCalendar';
 
 const Index = () => {
@@ -21,12 +21,11 @@ const Index = () => {
   const [saved, setSaved] = useState([]);
   const [typeRecommend, setTypeRecommend] = useState([]);
   const [array, setArray] = useState('추천순');
-  const [error, setError] = useState(null);
+  const [, setError] = useState(null);
   const [username, setUsername] = useRecoilState(usernameState);
   const [startDate, setStartDate] = useRecoilState(startDateState);
   const [endDate, setEndDate] = useRecoilState(endDateState);
-  const [title, setTitle] = useRecoilState(titleState);
-  const [id, setId] = useState(bingoIdState);
+  const [, setTitle] = useRecoilState(titleState);
   const [Dday1, setDday1] = useRecoilState(Day1State);
   const [Dday2, setDday2] = useRecoilState(Day2State);
   const [isExecuted, setIsExecuted] = useRecoilState(isExecutedState);
@@ -121,9 +120,7 @@ const Index = () => {
         const item = response.bingo_obj.find((item) => item.location === index);
         return item?.is_executed ? 1 : 0;
       });
-      const isExecuted = response.bingo_obj.map((item) => item.is_executed ? 1 : 0);
-      // console.log(isExecuted);
-      setIsExecuted(executedArray); 
+      setIsExecuted(executedArray);
       // console.log(executedArray); 
     } catch (error) {
       setError(error);
@@ -198,6 +195,7 @@ const Index = () => {
     viewTypeRecommend();
     getBingos();
     getDdays();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

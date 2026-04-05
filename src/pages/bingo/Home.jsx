@@ -7,7 +7,7 @@ import { getDday, getHueInfo, getSaved, getTypeRecommend, getUpcomming, postBing
 import HeaderHook from '../../components/HeaderHook';
 import FooterHook from '../../components/FooterHook';
 import { RightDom } from './BingoInfo';
-import { prepDateState, bingoState, usernameState, startDateState, endDateState, titleState, bingoObjectState, Day1State, Day2State } from '../../recoil/atoms';
+import { prepDateState, bingoState, startDateState, endDateState, titleState, bingoObjectState, Day1State, Day2State } from '../../recoil/atoms';
 import CustomCalendar from './CustomCalendar';
 import { FiThumbsUp } from 'react-icons/fi';
 
@@ -20,13 +20,13 @@ const Home = () => {
   const [saved, setSaved] = useState([]);
   const [typeRecommend, setTypeRecommend] = useState([]);
   const [array, setArray] = useState('추천순'); //default값
-  const [error, setError] = useState(null);
-  const [username] = useRecoilState(usernameState);
+  const [, setError] = useState(null);
+
   const [title, setTitle] = useRecoilState(titleState);
   const [startDate, setStartDate] = useRecoilState(startDateState);
   const [endDate, setEndDate] = useRecoilState(endDateState);
   const [prepDates, setPrepDates] = useRecoilState(prepDateState);
-  const [bingoObject, setBingoObject] = useRecoilState(bingoObjectState);
+  const [bingoObject] = useRecoilState(bingoObjectState);
   const [Dday1, setDday1] = useRecoilState(Day1State);
   const [Dday2, setDday2] = useRecoilState(Day2State);
 
@@ -252,6 +252,7 @@ const Home = () => {
     if (bingos.length === 0) {
       fetchBingoData();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bingoObject, navigate]);
 
   return (

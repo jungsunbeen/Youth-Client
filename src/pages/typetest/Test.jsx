@@ -9,8 +9,8 @@ import textLogo from '../../images/Frame 8.png';
 
 const Test = () => {
     const navigate = useNavigate();
-    const [year,setYear] = useRecoilState(yearState);
-    const [semester,setSemester] = useRecoilState(semesterState);
+    const [, setYear] = useRecoilState(yearState);
+    const [, setSemester] = useRecoilState(semesterState);
     
     const handleYearSemesterChange = (newYear, newSemester) => {
         setYear(newYear);
@@ -28,7 +28,7 @@ const Test = () => {
     return (
         <>
             <Header>
-                <img src={textLogo} style={{ width: '200px', height: '40px', cursor: 'pointer' }} onClick={toHome}></img>
+                <img src={textLogo} alt="logo" style={{ width: '200px', height: '40px', cursor: 'pointer' }} onClick={toHome}></img>
             </Header>
             <QuizDom>
                 <ProgressBar currentStep={1} totalSteps={4} />

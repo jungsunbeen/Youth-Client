@@ -1,5 +1,4 @@
 import {
-  mock,
   getMockReviewList,
   getMockReviewById,
   getMockNoticeList,

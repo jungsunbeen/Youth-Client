@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { MdOutlineKeyboardBackspace, MdOutlineNearMe } from 'react-icons/md';
+import { MdOutlineKeyboardBackspace } from 'react-icons/md';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { Body } from './Home';
@@ -221,19 +221,6 @@ const MadeDragBingo = () => {
 
 export default MadeDragBingo;
 
-const Button = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-  height: 20px;
-  padding: 10px;
-  gap: 10px;
-  border-radius: 10px;
-  background: rgba(30, 58, 138, 1);
-  color: white;
-`;
-
 const DateInfo = styled.div`
 
 opacity: var(--sds-size-stroke-border);
@@ -296,8 +283,3 @@ export const Review = styled.div`
   border-radius: 10px;
 `;
 
-const StyledDiv = styled.div`
-  border: 0.4px solid rgba(142, 156, 196, 1);
-  border-radius: 10px;
-  padding: 7px;
-`;

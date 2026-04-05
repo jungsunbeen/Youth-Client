@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { QuizDom, QuestionContainer, ButtonDom, Button, Detail } from './Test.jsx';
 import ProgressBar from '../../components/typetest/ProgressBar';
@@ -13,7 +13,7 @@ import { answer3State } from '../../recoil/testatoms.jsx';
 import textLogo from '../../images/Frame 8.png';
 
 const Test2 = ({ selectedAnswers, setSelectedAnswers }) => {
-    const [answer3, setAnswer3] = useRecoilState(answer3State);
+    const [, setAnswer3] = useRecoilState(answer3State);
     const navigate = useNavigate();
 
     const handleBeforeClick = () => {
@@ -64,7 +64,7 @@ const Test2 = ({ selectedAnswers, setSelectedAnswers }) => {
     return (
         <>
         <Header>
-          <img src={textLogo} style={{ width: '200px', height: '40px', cursor: 'pointer' }} onClick={toHome}></img>
+          <img src={textLogo} alt="logo" style={{ width: '200px', height: '40px', cursor: 'pointer' }} onClick={toHome}></img>
         </Header>
         <QuizDom>
             <ProgressBar currentStep={3} totalSteps={4} />

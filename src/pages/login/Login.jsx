@@ -46,7 +46,7 @@ const Login = () => {
   return (
   <>
     <Header>
-      <img src={Frame8} style={{ width: '200px', height: '40px', cursor: 'pointer' }} onClick={toHome}></img>
+      <img src={Frame8} alt="Logo" style={{ width: '200px', height: '40px', cursor: 'pointer' }} onClick={toHome}></img>
     </Header>
     <Wrapper>
       <Title>로그인</Title>
@@ -57,7 +57,7 @@ const Login = () => {
               <FiUser />
             </ReactIcon>
             <input value={username} onChange={onChangeUsername} placeholder='아이디를 입력해주세요.'></input>
-            <img src={transimg} />
+            <img src={transimg} alt="" />
           </InputBox>
           <InputBox>
             <ReactIcon>

@@ -49,6 +49,7 @@ const Noti = () => {
     }
 
     getReviewsByCategory(categoryMap[selectedCategory]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleBtn = () => {
@@ -117,35 +118,6 @@ const Noti = () => {
     // console.log(categoryMap[category]);
   };
 
-  const getAllReview = async () => {
-    try {
-      const response = await getSearchByCategory('');
-      const noticeData = (response.notice || []).map((item) => ({
-        id: item.id,
-        large_category: item.large_category,
-        author: item.author,
-        created_at: item.created_at,
-        title: item.title,
-        image: item.image_url || item.images?.[0]?.image || '',
-        saved: item.saved,
-      }));
-      setNotice(noticeData);
-      const reviewData = (response.review || []).map((item) => ({
-        id: item.id,
-        author: item.author,
-        created_at: item.created_at,
-        title: item.title,
-        image: item.images?.[0]?.image || '',
-        likes_count: item.likes_count,
-        comments_count: item.comments_count,
-        saved: item.saved,
-      }));
-      setReview(reviewData);
-    } catch (error) {
-      console.error('Error in getReview:', error.response ? error.response.data : error.message);
-    }
-  };
-
   const getReviewsByCategory = async (category) => {
     try {
       const response = await getSearchByCategory(category);
@@ -184,14 +156,14 @@ const Noti = () => {
     } else {
       try {
         if (type === 'notice') {
-          const response = await getHandleNoticeSaved(id);
+          await getHandleNoticeSaved(id);
           setNotice((prevNotice) =>
             prevNotice.map((item) =>
               item.id === id ? { ...item, saved: !item.saved } : item
             )
           );
         } else {
-          const response = await getHandleReviewSaved(id);
+          await getHandleReviewSaved(id);
           setReview((prevReview) =>
             prevReview.map((item) =>
               item.id === id ? { ...item, saved: !item.saved } : item
@@ -212,38 +184,6 @@ const Noti = () => {
   const goNotice = (id) => {
     navigate(`/viewnotice/${id}`);
   };
-
-  const doKeywordSearch = async () => {
-    try {
-      const response = await getSearchByKeyword(searchKeyword);
-        const notice = response.notice.map((item) => ({
-          id: item.id,
-          author: item.author,
-          created_at: item.created_at,
-          title: item.title,
-          image: item.image_url,
-          saved: item.saved,
-        }));
-        const review = response.review.map((item) => ({
-          id: item.id,
-          author: item.author,
-          created_at: item.created_at,
-          title: item.title,
-          image: item.images[0]?.image || '',
-          likes_count: item.likes_count,
-          comments_count: item.comments_count,
-          saved: item.saved,
-        }));
-        setNotice(notice);
-        setReview(review);
-
-        if (notice.length === 0 && review.length === 0) {
-          alert('검색 결과가 없습니다.');
-        }
-      } catch (error) {
-        console.error('Error in getReviewByCategory:', error.response ? error.response.data : error.message);
-      }
-    };
 
   const doSearch = async () => {
     try {
@@ -307,10 +247,6 @@ const Noti = () => {
     navigate('/review');
   };
 
-  const goHue = (id) => {
-    navigate(`/viewhue/${id}`);
-  };
-
   return (
     <>
       <HeaderofHome>
@@ -326,7 +262,7 @@ const Noti = () => {
         </LogoutBtn>
         <Headers>
           <Logo to ="/">
-            <img src={logo}></img>
+            <img src={logo} alt="Logo"></img>
           </Logo>
           <Nav>
             { isLoggedIn ?
@@ -339,8 +275,8 @@ const Noti = () => {
                 <Header to="/mypage">마이페이지</Header>
                 <Modal onClick={handleBtn}>
                   { isModalOpen ?
-                    <img src={modalopenimg}></img> :
-                    <img src={modalcloseimg}></img> }
+                    <img src={modalopenimg} alt="메뉴 열기"></img> :
+                    <img src={modalcloseimg} alt="메뉴 닫기"></img> }
                 </Modal>
               </Mypage> 
             </> :
@@ -414,7 +350,7 @@ const Noti = () => {
                     value={searchKeyword}
                     onChange={(e) => setSearchKeyword(e.target.value)}
                     />
-                    <img src={search} onClick={doSearch} />
+                    <img src={search} alt="검색" onClick={doSearch} />
                   </SearchDom>
                 ) : (
                   <NewLine>
@@ -487,9 +423,9 @@ const Noti = () => {
                 </PhotoBox>
                 <div style={{fontSize: '16px', fontWeight: '700', marginLeft: '3%', marginTop: '3%'}}>{item.title}</div>
                 <Comment>
-                  <img src={heartimg} style={{ width: '28px', height:'28px' }} />
+                  <img src={heartimg} alt="좋아요" style={{ width: '28px', height:'28px' }} />
                   <span>{item.likes_count}</span>
-                  <img src={msgimg} style={{ color: 'rgba(27, 52, 124, 1)', width: '28px', height:'28px' }} />
+                  <img src={msgimg} alt="댓글" style={{ color: 'rgba(27, 52, 124, 1)', width: '28px', height:'28px' }} />
                   <span>{item.comments_count}</span>
                 </Comment>
               </Content>

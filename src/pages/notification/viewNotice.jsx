@@ -207,12 +207,6 @@ const Line = styled.div`
   flex-direction: row;
   padding: 10px;
 `
-const Row = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-`
-
 const ReviewDom = styled.div`
   display: flex;
   flex-direction: column;

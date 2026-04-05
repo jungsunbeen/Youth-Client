@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { MdOutlineKeyboardBackspace, MdOutlineNearMe } from 'react-icons/md';
+import { MdOutlineKeyboardBackspace } from 'react-icons/md';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { Bingo, Body } from './Home';
+import { Body } from './Home';
 import HeaderHook from '../../components/HeaderHook';
 import FooterHook from '../../components/FooterHook';
-import { getBingo, getInfo, putBingoloc } from '../../apis/testapis';
+import { getInfo } from '../../apis/testapis';
 import { Category, CheckLists, CheckList, InputBox } from './MadeBingo';
-import { RightDom } from './BingoInfo';
+import { RightDom, DateInfo, TitleLine, Car } from './BingoInfo';
 import { AiOutlineMinusCircle } from 'react-icons/ai';
 import { CiSquarePlus } from 'react-icons/ci';
 import Bingomain from './Bingomain';
 import { useRecoilState } from 'recoil';
-import { DateInfo ,TitleLine,Car} from './BingoInfo';
 import { bingoState, bingoObjectState } from '../../recoil/atoms';
 
 const MadedInClient = () => {
@@ -21,10 +20,9 @@ const MadedInClient = () => {
   const [newChecklistText, setNewChecklistText] = useState('');
   const { location } = useParams();
   const [info, setInfo] = useState(null);
-  const [bingos, setBingos] = useRecoilState(bingoState);
+  const [, setBingos] = useRecoilState(bingoState);
   const [bingoObject, setBingoObject] = useRecoilState(bingoObjectState);
   const [title , setTitle] = useState("");
-  const [largecategory , setLargeCategory] = useState("");
 
   const goHome = () => {
     navigate("/bingo");
@@ -113,10 +111,6 @@ const MadedInClient = () => {
     if(bingoObject.bingo_obj[locationIndex].title) {
         const title = bingoObject.bingo_obj[locationIndex].title;
         setTitle(title);
-    }
-    if(bingoObject.bingo_obj[locationIndex].large_category){
-        const largecategory = bingoObject.bingo_obj[locationIndex].large_category;
-        setLargeCategory(largecategory);
     }
   }, [location, bingoObject]);
 
@@ -236,19 +230,6 @@ const MadedInClient = () => {
 
 export default MadedInClient;
 
-const Button = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-  height: 20px;
-  padding: 10px;
-  gap: 10px;
-  border-radius: 10px;
-  background: rgba(30, 58, 138, 1);
-  color: white;
-`;
-
 const Line = styled.div`
   display: flex;
   flex-direction: row;
@@ -281,8 +262,3 @@ export const Review = styled.div`
   border-radius: 10px;
 `;
 
-const StyledDiv = styled.div`
-  border: 0.4px solid rgba(142, 156, 196, 1);
-  border-radius: 10px;
-  padding: 7px;
-`;

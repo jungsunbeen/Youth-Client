@@ -1,10 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
 import HeaderHook from '../../components/HeaderHook';
 import MdOutlinedFeed from '../../images/MdOutlineFeed.png';
 import Vector from '../../images/Vector.png';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Minus from '../../images/AiOutlineMinusCircle.png';
 import PlusSquare from '../../images/FiPlusSquare.png';
 import EmojiEmotion from '../../images/MdOutlineEmojiEmotions.png';
@@ -13,7 +12,6 @@ import checkimg from '../../images/AiOutlineCheckSquare.png';
 import heartimg from '../../images/AiOutlineHeartRed.png';
 import { useForm } from '../../hook/useForm';
 import { getData, putFormData, postThisIsMe, postOthers, postBingo, delThisIsMe, delBingo, delOthers, getReview, getCertifiedReview } from '../../apis/portFolioapis';
-import { myInfo } from '../../apis/mypageapis';
 
 
 const ChangePortfolio = () => {
@@ -39,8 +37,6 @@ const ChangePortfolio = () => {
   const [everyReview, setEveryReview] = useState([]);
   const [certifiedReview, setCertifiedReview] = useState([]);
 
-  const [typeImage, setTypeImage] = useState("");
-  const [userType,setUserType] = useState("");
 
   const [isChecked, setIsChecked] = useState(false);
 
@@ -136,7 +132,7 @@ const ChangePortfolio = () => {
     if (schoolMajor) formdata.append("school_major", schoolMajor);
     if (image) formdata.append("image", image);
 
-    const response = await putFormData(formdata);
+    await putFormData(formdata);
     // console.log(response.data);
     router('/readportfolio');
   };
@@ -148,13 +144,12 @@ const ChangePortfolio = () => {
     {
       "content": aboutMeTexts,
     };
-    const response = await postThisIsMe(content);
-    console.log(response.data);
+    await postThisIsMe(content);
     router(0);
   };
 
   const delAboutMe = async (id) => {
-    const response = await delThisIsMe(id);
+    await delThisIsMe(id);
     // console.log(response.data);
     router(0);
   };
@@ -166,13 +161,13 @@ const ChangePortfolio = () => {
     {
       "content": bingoTexts,
     }
-    const response = await postBingo(content);
+    await postBingo(content);
     // console.log(response.data);
     router(0);
   };
 
   const delBingoComplete = async (id) => {
-    const response = await delBingo(id);
+    await delBingo(id);
     // console.log(response.data);
     router(0);
   };
@@ -185,13 +180,13 @@ const ChangePortfolio = () => {
     {
       "content": othersTexts,
     }
-    const response = await postOthers(content);
+    await postOthers(content);
     // console.log(response.data);
     router(0);
   };
 
   const delOthersComplete = async (id) => {
-    const response = await delOthers(id);
+    await delOthers(id);
     // console.log(response.data);
     router(0);
   };
@@ -207,10 +202,10 @@ const ChangePortfolio = () => {
       <HeaderHook></HeaderHook>
       <BackgroundWrapper />
       <ProfileImage>
-        <img src={image} style={{ height: '128px', width: '128px', borderRadius: '50%'}}></img>
+        <img src={image} alt="profile" style={{ height: '128px', width: '128px', borderRadius: '50%'}}></img>
       </ProfileImage>
       <SaveBtn>
-        <button onClick={handleSubmit} style={{ cursor: 'pointer' }}><img src={saveimg}></img></button>
+        <button onClick={handleSubmit} style={{ cursor: 'pointer' }}><img src={saveimg} alt="save"></img></button>
       </SaveBtn>
       <Body>
         <ProfileWrapper>
@@ -262,17 +257,17 @@ const ChangePortfolio = () => {
           <p>휴학 기간에 달성한 사소한 목표부터 자랑하고픈 업적까지 모두 기록해보세요.</p>
           <AboutMeWrapper>
             <SubTitle>
-              <img src={EmojiEmotion} style={{ width: '24px', height: '24px', paddingRight: '5px' }}></img>
+              <img src={EmojiEmotion} alt="" style={{ width: '24px', height: '24px', paddingRight: '5px' }}></img>
               {username}, who are you?
             </SubTitle>
             <ContentLists>
               <ContentWrapper>
                 {newAboutMeTexts.map((data) => (
                   <div key={data.id} style={{ display: 'flex'}}>
-                    <img 
-                      src={Minus} 
-                      style={{ width: '16px', height: '16px', marginRight: '8px' }} 
-                      onClick={() => delAboutMe(data.id)} 
+                    <img
+                      src={Minus} alt="remove"
+                      style={{ width: '16px', height: '16px', marginRight: '8px' }}
+                      onClick={() => delAboutMe(data.id)}
                     />
                     <ContentList>
                       <div>{data.content}</div>
@@ -287,14 +282,14 @@ const ChangePortfolio = () => {
                   onChange={onChangeAboutMeTexts}
                   placeholder={`${username} 님에 대해 이야기해주세요`}
                 />
-                <img src={PlusSquare} style={{ width: '26px', height: '26px' }} onClick={aboutMe} />
+                <img src={PlusSquare} alt="add" style={{ width: '26px', height: '26px' }} onClick={aboutMe} />
               </AddContent>
             </ContentLists>
           </AboutMeWrapper>
           <HueWrapper>
             <ClearWrapper>
               <SubTitle>
-                <img src={EmojiEmotion} style={{ width: '24px', height: '24px', paddingRight: '5px' }}></img>
+                <img src={EmojiEmotion} alt="" style={{ width: '24px', height: '24px', paddingRight: '5px' }}></img>
                 달성한 빙고 한 눈에 보기
               </SubTitle>
               <Content>
@@ -303,7 +298,7 @@ const ChangePortfolio = () => {
                     {newBingoTexts.map((data) => (
                       <div key={data.id} style={{ display: 'flex'}}>
                         <img 
-                          src={Minus} 
+                          src={Minus} alt="remove" 
                           style={{ width: '16px', height: '16px', marginRight: '8px' }} 
                           onClick={() => delBingoComplete(data.id)} 
                         />
@@ -320,14 +315,14 @@ const ChangePortfolio = () => {
                       onChange={onChangeBingoTexts}
                       placeholder="달성한 빙고에 대해 이야기해주세요."
                     />
-                    <img src={PlusSquare} style={{ width: '26px', height: '26px'}} onClick={bingoComplete} />
+                    <img src={PlusSquare} alt="add" style={{ width: '26px', height: '26px'}} onClick={bingoComplete} />
                   </AddContent>
                 </ContentLists>
               </Content>
             </ClearWrapper>
             <ClearWrapper>
               <SubTitle>
-                <img src={EmojiEmotion} style={{ width: '24px', height: '24px', paddingRight: '5px' }}></img>
+                <img src={EmojiEmotion} alt="" style={{ width: '24px', height: '24px', paddingRight: '5px' }}></img>
                 다른 성과 한 눈에 보기
               </SubTitle>
               <Content>
@@ -336,7 +331,7 @@ const ChangePortfolio = () => {
                       {newOthersTexts.map((data) => (
                         <div key={data.id} style={{ display: 'flex'}}>
                           <img 
-                            src={Minus} 
+                            src={Minus} alt="remove" 
                             style={{ width: '16px', height: '16px', marginRight: '8px' }} 
                             onClick={() => delOthersComplete(data.id)} 
                           />
@@ -353,7 +348,7 @@ const ChangePortfolio = () => {
                       onChange={onChangeOthersTexts}
                       placeholder="휴알유 이외의 성과에 대해 이야기해주세요."
                     />
-                    <img src={PlusSquare} style={{ width: '26px', height: '26px' }} onClick={othersComplete} />
+                    <img src={PlusSquare} alt="add" style={{ width: '26px', height: '26px' }} onClick={othersComplete} />
                   </AddContent>
                 </ContentLists>
               </Content>
@@ -362,11 +357,11 @@ const ChangePortfolio = () => {
         </AchievementWrapper>
         <ReviewWrapper style={{ float: 'bottom' }}>
           <Title>
-            <SectionTitle><img src={MdOutlinedFeed} style={{ height: '21px', width: '19px' }}></img>내가 쓴 포스트 보기</SectionTitle>
+            <SectionTitle><img src={MdOutlinedFeed} alt="" style={{ height: '21px', width: '19px' }}></img>내가 쓴 포스트 보기</SectionTitle>
             <CheckBox onClick={handleCheck}>
               {isChecked ? 
-                <img src={checkimg} style={{ width: '24px', height: '24px', paddingRight: '10px' }}></img> :
-                <img src={Vector} style={{ width: '24px', height: '24px', paddingRight: '10px' }}></img>}
+                <img src={checkimg} alt="checked" style={{ width: '24px', height: '24px', paddingRight: '10px' }}></img> :
+                <img src={Vector} alt="unchecked" style={{ width: '24px', height: '24px', paddingRight: '10px' }}></img>}
               <p>빙고 인증 후기만 보기</p>
             </CheckBox>
           </Title>
@@ -377,7 +372,7 @@ const ChangePortfolio = () => {
                   <ImageWrapper>
                     {review.images.map((img) => (
                       <ReviewImage key={img.image_id}>
-                        <img src={img.image} />
+                        <img src={img.image} alt="" />
                       </ReviewImage>
                     ))}
                   </ImageWrapper>
@@ -398,11 +393,6 @@ const ChangePortfolio = () => {
 
 export default ChangePortfolio;
 
-const Image = styled.div`
-height: 128px;
- width: 128px;
-  borderRadius: 50px;
-`
 
 const BackgroundWrapper = styled.div`
  background-image: linear-gradient(to bottom, rgba(30, 58, 138, 0.8), #FFFFFF);

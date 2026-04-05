@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { bingoState, usernameState, startDateState, endDateState, titleState, Day1State, Day2State, bingoObjectState, isExecutedState, prepDateState } from '../../recoil/atoms';
-import { getBingo, getDday, putDday } from '../../apis/testapis';
+import { bingoState, startDateState, endDateState, titleState, Day1State, Day2State, isExecutedState, prepDateState } from '../../recoil/atoms';
+import { getDday, putDday } from '../../apis/testapis';
 import {StyledDday1, StyledDday2} from './Home';
 import { useNavigate } from 'react-router-dom';
 import CustomCalendar from './CustomCalendar';
 //빙고를 만들기 전 (api post 하기 전) 보여주는 빙고칸
 const Bingomain2 = () => {
-  const [bingos, setBingos] = useRecoilState(bingoState);
-  const [username, setUsername] = useRecoilState(usernameState);
+  const [bingos] = useRecoilState(bingoState);
+
   const [startDate, setStartDate] = useRecoilState(startDateState);
   const [endDate, setEndDate] = useRecoilState(endDateState);
-  const [title, setTitle] = useRecoilState(titleState);
+  const [title] = useRecoilState(titleState);
   const [Dday1, setDday1] = useRecoilState(Day1State);
   const [Dday2, setDday2] = useRecoilState(Day2State);
-  const [isExecuted, setIsExecuted] = useRecoilState(isExecutedState);
+  const [isExecuted] = useRecoilState(isExecutedState);
   const [prepDates, setPrepDates] = useRecoilState(prepDateState);
   //빙고 불러오는 함수
   // const getBingos = async () => {
@@ -88,7 +88,8 @@ const Bingomain2 = () => {
     if (!Dday1 && !Dday2) {
       getDdays();
     }
-  }, [bingos]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [bingos, Dday1, Dday2]);
 
   return (
     <LeftDom>

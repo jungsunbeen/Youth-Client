@@ -10,7 +10,7 @@ import textLogo from '../../images/Frame 8.png';
 
 const Test3 = ({inputValue, setInputValue}) => {
   const navigate = useNavigate();
-  const [answer4, setAnswer4] = useRecoilState(answer4State);
+  const [, setAnswer4] = useRecoilState(answer4State);
 
   const showResult = () => {
     setAnswer4(inputValue);
@@ -25,7 +25,7 @@ const Test3 = ({inputValue, setInputValue}) => {
   return (
     <>
     <Header>
-          <img src={textLogo} style={{ width: '200px', height: '40px', cursor: 'pointer' }} onClick={toHome}></img>
+          <img src={textLogo} alt="logo" style={{ width: '200px', height: '40px', cursor: 'pointer' }} onClick={toHome}></img>
     </Header>
     <QuizDom>
       <ProgressBar currentStep={4} totalSteps={4} />

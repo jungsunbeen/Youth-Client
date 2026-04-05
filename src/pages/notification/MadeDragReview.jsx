@@ -11,9 +11,7 @@ import check from '../../images/FiCheck.png';
 const MadeDragReview = () => {
   const { location } = useParams();
   const [info, setInfo] = useState(null);
-  const [title, setTitle] = useState('');
   const [todo, setTodo] = useState([]);
-  const [images, setImages] = useState([]);
   const [content, setContent] = useState('');
   const [procedure, setProcedure] = useState('');
 
@@ -44,14 +42,8 @@ const MadeDragReview = () => {
           author: response.bingo_item.author,
           created_at: response.bingo_item.created_at,
         };
-        setTitle(info.title);
         setTodo(todo);
         setInfo(info);
-        const images = response.images ? response.images.map((item) => ({
-          image_id: item.image_id,
-          image: item.image,
-        })) : [];
-        setImages(images);
       } catch (error) {
         console.error('Error in getNotice:', error.response ? error.response.data : error.message);
         throw error;
@@ -164,7 +156,7 @@ const MadeDragReview = () => {
               <ReviewContent>
                 {todo.map((item) => (
                     <CheckLists>
-                      <img src={check} style={{width: '20px', height: '20px'}} />
+                      <img src={check} alt="" style={{width: '20px', height: '20px'}} />
                       <div>{item.title}</div>
                     </CheckLists>
                 ))}

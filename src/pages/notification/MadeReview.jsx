@@ -211,7 +211,7 @@ const MadeReview = () => {
       // console.log(body);
       // const response = await postMyReview(jsonFormData);
       // const response = await postMyReview(body);
-      const response = await postMyReview(data);
+      await postMyReview(data);
       // console.log(body);
       // console.log(response);
       // console.log(response.id);
@@ -441,15 +441,6 @@ const Category = styled.div`
   color : rgba(27, 52, 124, 1);
   font-size : 20px;
   // border : 0.2px solid rgba(142, 156, 196, 1);
-`
-
-const PhotoDom = styled.div`
-  display : flex;
-  flex-direction : row;
-  align-items : center;
-  justify-content : center;
-  width : 100%;
-  gap : 5%;
 `
 
 const Button = styled.button`

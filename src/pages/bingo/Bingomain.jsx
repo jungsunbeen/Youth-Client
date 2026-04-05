@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { bingoState, usernameState, startDateState, endDateState, titleState, Day1State, Day2State, bingoObjectState, isExecutedState, prepDateState } from '../../recoil/atoms';
+import { bingoState, usernameState, startDateState, endDateState, titleState, Day1State, Day2State, isExecutedState, prepDateState } from '../../recoil/atoms';
 import { getBingo, getDday, putDday } from '../../apis/testapis';
 import {StyledDday1, StyledDday2} from './Home';
 import { Bingo } from './Index';
@@ -16,7 +16,7 @@ const Bingomain = () => {
   const [title, setTitle] = useRecoilState(titleState);
   const [Dday1, setDday1] = useRecoilState(Day1State);
   const [Dday2, setDday2] = useRecoilState(Day2State);
-  const [isExecuted, setIsExecuted] = useRecoilState(isExecutedState);
+  const [isExecuted] = useRecoilState(isExecutedState);
   const [prepDates, setPrepDates] = useRecoilState(prepDateState);
   //빙고칸 정보 가져오기
   const getBingos = async () => {
@@ -88,7 +88,8 @@ const Bingomain = () => {
     if (!Dday1 && !Dday2) {
       getDdays();
     }
-  }, [bingos]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [bingos, Dday1, Dday2]);
 
   return (
     <LeftDom>

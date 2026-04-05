@@ -241,14 +241,6 @@ const Line = styled.div`
   flex-direction: row;
   padding: 10px;
 `
-const Row = styled.div`
-  display: flex;
-  flex-direction: column;
-  // align-items: center;
-  // justify-content: center;
-  padding: 10px;
-`
-
 const ReviewDom = styled.div`
   display: flex;
   flex-direction: column;
@@ -318,40 +310,6 @@ const InfoDom = styled.div`
   padding-top: 4%;
   padding-bottom: 4%;
 `
-
-const InputBox = styled.input`
-  padding: 5px;
-  border-radius: 10px;
-  border: 0.2px solid rgba(142, 156, 196, 1);
-  font-size: 15px;
-  width: 50%;
-  color: rgba(142, 156, 196, 1);
-`
-
-const Selector = styled.select`
-  border: 0.2px solid rgba(142, 156, 196, 1);
-  font-size: 15px;
-  padding: 5px;
-  border-radius: 10px;
-  width: 260px;
-  color: rgba(142, 156, 196, 1);
-`
-
-const DateInfo = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 15px;
-  height: 20px;
-  width: 260px;
-  padding: 5px;
-  border-radius: 10px;
-  border: 0.2px solid rgba(142, 156, 196, 1);
-  color: rgba(142, 156, 196, 1);
-  border-radius: 10px;
-  // padding: 8px;
-  gap: 5px;
-`;
 
 const Category = styled.div`
   display: flex;

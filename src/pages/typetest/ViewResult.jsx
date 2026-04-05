@@ -6,7 +6,6 @@ import { ButtonDom, ButtonLink } from './Test'
 import { FiArrowRightCircle } from 'react-icons/fi'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from "axios";
-import { useLocation } from "react-router-dom";
 import textLogo from '../../images/Frame 8.png';
 
 const ViewResult = () => {
@@ -14,7 +13,6 @@ const ViewResult = () => {
     const [userType, setUserType] = useState("");
     const [content, setContent] = useState([]);
     const [image, setImage] = useState("");
-    const location = useLocation();
     const navigate = useNavigate();
 
     const getTypeTestResult = async(type) => {
@@ -43,7 +41,7 @@ const ViewResult = () => {
   return (
     <>
     <Header>
-          <img src={textLogo} style={{ width: '200px', height: '40px', cursor: 'pointer' }} onClick={toHome}></img>
+          <img src={textLogo} alt="logo" style={{ width: '200px', height: '40px', cursor: 'pointer' }} onClick={toHome}></img>
     </Header>
     <ResultDom>
       <Image>
