@@ -83,7 +83,7 @@ const Bingomain2 = () => {
 
   useEffect(() => {
     if (bingos.length === 0) {
-      getBingos();
+      // getBingos();
     }
     if (!Dday1 && !Dday2) {
       getDdays();

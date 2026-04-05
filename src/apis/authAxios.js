@@ -1,22 +1,9 @@
-import axios from "axios";
-import { getNewRefreshToken } from "./testapis";
-
+// 데모 모드에서는 인증 인터셉터가 필요 없음
 export const getAuthAxios = (token) => {
-    const authAxios = axios.create({
-        baseURL: baseURL,
-        headers: {
-            Authorization: `Bearer ${token}`,
-        },
-    });
-    authAxios.interceptors.response.use(
-        (response) => response, // On success, return the response
-        async (error) => { // On error, handle token refresh
-            const result = await getNewRefreshToken();
-            error.config.headers.Authorization = `Bearer ${result.accessToken}`;
-            localStorage.setItem("access", result.accessToken);
-            localStorage.setItem("refresh", result.refreshToken);
-            return await axios.get(error.config.url, error.config);
-        }
-    );
-    return authAxios;
+  return {
+    get: async (url, config) => ({ data: {} }),
+    post: async (url, data, config) => ({ data: {} }),
+    put: async (url, data, config) => ({ data: {} }),
+    delete: async (url, config) => ({ data: {} }),
+  };
 };

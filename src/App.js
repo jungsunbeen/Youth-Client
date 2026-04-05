@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import { seedDemoSession } from './apis/mockData';
 import Home from './pages/bingo/Home';
 import Index from './pages/bingo/Index';
 import Login from './pages/login/Login';
@@ -34,6 +35,7 @@ import ViewResult from './pages/typetest/ViewResult';
 import MadedInClient from './pages/bingo/MadedInClient';
 
 function App() {
+  seedDemoSession();
   const [year, setYear] = useState(2024);
   const [semester, setSemester] = useState(1);
   const [selectedAnswers, setSelectedAnswers] = useState('');

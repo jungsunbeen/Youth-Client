@@ -1,143 +1,54 @@
-import axios from "axios";
+import {
+  getMockPortfolio,
+  updateMockPortfolio,
+  addPortfolioText,
+  removePortfolioText,
+  getMockPortfolioReviews,
+} from "./mockData";
 
-const baseURL = 'https://maknaengee.p-e.kr';
-
-//put FormData
+// put FormData
 export const putFormData = async (formData) => {
-    const token = localStorage.getItem("access_token");
-    const response = await axios.put(`${baseURL}/portfolio/`, formData, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'multipart/form-data'
-    }});
-   return response.data;
-  };
-
+  return updateMockPortfolio(formData);
+};
 
 // AboutMe
 export const postThisIsMe = async (content) => {
-  try { 
-    const token = localStorage.getItem("access_token");
-    const response = await axios.post(`${baseURL}/portfolio/this-is-me/`, content, {
-      headers: {
-        Authorization: `Bearer ${token}`
-    }});
-    return response.data;
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
+  return addPortfolioText('this_is_me', content?.content || content);
 };
 
 export const delThisIsMe = async (id) => {
-  try {
-    const token = localStorage.getItem("access_token");
-    const response = await axios.delete(`${baseURL}/portfolio/this-is-me/${id}/`, {
-       headers: {
-        Authorization: `Bearer ${token}`
-    }});
-    return response.data;
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
+  return removePortfolioText('this_is_me', id);
 };
-
 
 // Bingo
 export const postBingo = async (content) => {
-  try { 
-    const token = localStorage.getItem("access_token");
-    const response = await axios.post(`${baseURL}/portfolio/bingo-complete/`, content, {
-      headers: {
-        Authorization: `Bearer ${token}`
-    }});
-    return response.data;
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
+  return addPortfolioText('bingo_complete', content?.content || content);
 };
 
 export const delBingo = async (id) => {
-  try {
-    const token = localStorage.getItem("access_token");
-    const response = await axios.delete(`${baseURL}/portfolio/bingo-complete/${id}/`, {
-       headers: {
-        Authorization: `Bearer ${token}`
-    }});
-    return response.data;
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
+  return removePortfolioText('bingo_complete', id);
 };
-
 
 // Others
 export const postOthers = async (content) => {
-  try { 
-    const token = localStorage.getItem("access_token");
-    const response = await axios.post(`${baseURL}/portfolio/other-complete/`, content, {
-      headers: {
-        Authorization: `Bearer ${token}`
-    }});
-    return response.data;
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
+  return addPortfolioText('other_complete', content?.content || content);
 };
 
 export const delOthers = async (id) => {
-  try {
-    const token = localStorage.getItem("access_token");
-    const response = await axios.delete(`${baseURL}/portfolio/other-complete/${id}/`, {
-       headers: {
-        Authorization: `Bearer ${token}`
-    }});
-    return response.data;
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
+  return removePortfolioText('other_complete', id);
 };
 
-
-//전체 데이터 get
+// 전체 데이터 get
 export const getData = async () => {
-  try {
-    const token = localStorage.getItem("access_token");
-    const response = await axios.get(`${baseURL}/portfolio/`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    });
-    return response.data;
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
-}
-
-//후기글 전체 get
-export const getReview = async () => {
-  const token = localStorage.getItem("access_token");
-  const response = await axios.get(`${baseURL}/portfolio/review/`, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  });
-  return response.data;
+  return getMockPortfolio();
 };
 
-//후기글 빙고 인증 후기 get
+// 후기글 전체 get
+export const getReview = async () => {
+  return getMockPortfolioReviews(false);
+};
+
+// 후기글 빙고 인증 후기 get
 export const getCertifiedReview = async () => {
-  const token = localStorage.getItem("access_token");
-  const response = await axios.get(`${baseURL}/portfolio/review/?only=bingo`, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  });
-  return response.data;
+  return getMockPortfolioReviews(true);
 };

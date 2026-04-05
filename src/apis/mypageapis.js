@@ -1,19 +1,11 @@
-import axios from "axios";
-
-const baseURL = 'https://maknaengee.p-e.kr';
+import { getMockPortfolio } from "./mockData";
 
 export const myInfo = async () => {
-  try {
-    const token = localStorage.getItem("access_token");
-    const response = await axios.get(`${baseURL}/my/`, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-    });
-    return response.data;
-  } catch (error) {
-    alert('로그인이 필요합니다.')
-    console.log(error)
-    throw error;
-  }
-}
+  const portfolio = getMockPortfolio();
+  return {
+    username: portfolio.username,
+    first_name: portfolio.username,
+    email: portfolio.basic_information.email,
+    college: portfolio.basic_information.school_major,
+  };
+};

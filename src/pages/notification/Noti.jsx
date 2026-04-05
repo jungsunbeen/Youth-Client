@@ -8,7 +8,7 @@ import modalcloseimg from '../../images/modalclose.png'
 import { Link } from 'react-router-dom';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
-import { getHandleNoticeSaved, getHandleReviewSaved, getReview, getSearchByCategory, getSearchByKeyword } from '../../apis/reviewapis';
+import { getHandleNoticeSaved, getHandleReviewSaved, getSearchByCategory, getSearchByKeyword } from '../../apis/reviewapis';
 import { GoCheck } from 'react-icons/go';
 import heartimg from '../../images/AiFillHeart.png';
 import msgimg from '../../images/AiOutlineMessage.png';
@@ -47,6 +47,8 @@ const Noti = () => {
     if (savedAccessToken) {
       setIsLoggedIn(true);
     }
+
+    getReviewsByCategory(categoryMap[selectedCategory]);
   }, []);
 
   const handleBtn = () => {
@@ -117,13 +119,28 @@ const Noti = () => {
 
   const getAllReview = async () => {
     try {
-      const response = await getReview();
-      const review = response.map((item) => ({
+      const response = await getSearchByCategory('');
+      const noticeData = (response.notice || []).map((item) => ({
         id: item.id,
+        large_category: item.large_category,
+        author: item.author,
+        created_at: item.created_at,
         title: item.title,
-        image: item.images[0]?.image || '',
+        image: item.image_url || item.images?.[0]?.image || '',
+        saved: item.saved,
       }));
-      setReview(review);
+      setNotice(noticeData);
+      const reviewData = (response.review || []).map((item) => ({
+        id: item.id,
+        author: item.author,
+        created_at: item.created_at,
+        title: item.title,
+        image: item.images?.[0]?.image || '',
+        likes_count: item.likes_count,
+        comments_count: item.comments_count,
+        saved: item.saved,
+      }));
+      setReview(reviewData);
     } catch (error) {
       console.error('Error in getReview:', error.response ? error.response.data : error.message);
     }
