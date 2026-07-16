@@ -13,7 +13,6 @@ import Signup from './pages/login/Signup';
 import { useState } from 'react';
 import MadeBingo from './pages/bingo/MadeBingo';
 import BingoInfo from './pages/bingo/BingoInfo';
-import Calendar from 'react-calendar';
 import ReadPortfolio from './pages/portFolio/ReadPortfolio';
 import ChangePortfolio from './pages/portFolio/ChangePortfolio';
 import MadeReview from './pages/notification/MadeReview';
@@ -61,7 +60,6 @@ function App() {
       <Route path="/madededit/:location" element={<MadedBingoEdit/>}></Route>
       <Route path="/login" element={<Login/>}></Route>
       <Route path="/signup" element={<Signup />}></Route>
-      <Route path="/cal" element={<Calendar />}/>
       <Route path="/review" element={<MadeReview />}/>
       <Route path="/dragreview/:location" element={<MadeDragReview />}/>
       <Route path="/viewreview/:id" element={<ViewReview />}/>
